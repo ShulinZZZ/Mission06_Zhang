@@ -52,7 +52,7 @@ namespace Mission06_Zhang.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("movies");
                 });
 #pragma warning restore 612, 618
         }

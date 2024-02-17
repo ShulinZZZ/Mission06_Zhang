@@ -11,11 +11,11 @@
     @if (Model != null)
     {
         var idCount = Model.MovieId != null ? 1 : 0;
-        <p>There are @idCount movies in the collection now</p>
+        <p>@idCount</p>
     }
     else
     {
-        <p>There is no movie in the collection.</p>
+        <p>0</p>
     }
 
 </div>

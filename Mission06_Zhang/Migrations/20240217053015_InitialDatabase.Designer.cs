@@ -10,8 +10,8 @@ using Mission06_Zhang.Models;
 namespace Mission06_Zhang.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    [Migration("20240217045543_second")]
-    partial class second
+    [Migration("20240217053015_InitialDatabase")]
+    partial class InitialDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace Mission06_Zhang.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("movies");
                 });
 #pragma warning restore 612, 618
         }
