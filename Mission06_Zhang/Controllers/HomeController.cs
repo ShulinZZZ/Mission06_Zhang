@@ -33,7 +33,7 @@ namespace Mission06_Zhang.Controllers
         {
             _movieContext.movies.Add(response);//add record to the database
             _movieContext.SaveChanges();
-            return View("index", response);
+            return View("Index", response);
         }
 
     }

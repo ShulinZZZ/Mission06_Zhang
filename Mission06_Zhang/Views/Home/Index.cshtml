@@ -2,11 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model Movies
 <div class="text-center">
     <h1 class="display-4">The Joel Hilton Film Collection</h1>
 
     <h2>Joel Hilton</h2>
     <img src="~/img/1.jpg" alt="Description of Joel Hilton" width="500" height="300">
-    
-   
+    @if (Model != null)
+    {
+        var idCount = Model.MovieId != null ? 1 : 0;
+        <p>There are @idCount movies in the collection now</p>
+    }
+    else
+    {
+        <p>There is no movie in the collection.</p>
+    }
+
 </div>
