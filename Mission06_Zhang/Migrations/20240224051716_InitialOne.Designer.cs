@@ -10,8 +10,8 @@ using Mission06_Zhang.Models;
 namespace Mission06_Zhang.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    [Migration("20240217053015_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20240224051716_InitialOne")]
+    partial class InitialOne
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,38 +19,38 @@ namespace Mission06_Zhang.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
-            modelBuilder.Entity("Mission06_Zhang.Models.Movies", b =>
+            modelBuilder.Entity("Mission06_Zhang.Models.Movie", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("category")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("director")
+                    b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("edited")
+                    b.Property<string>("Edited")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("lent")
+                    b.Property<string>("Lent")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("notes")
+                    b.Property<string>("Note")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("rating")
+                    b.Property<string>("Rating")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("title")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("year")
+                    b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("MovieId");

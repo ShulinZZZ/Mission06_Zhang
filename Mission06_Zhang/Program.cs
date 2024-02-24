@@ -5,9 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<MoviesContext>(Options =>
+builder.Services.AddDbContext<MoviesContext>(Options => 
 {
     Options.UseSqlite(builder.Configuration["ConnectionStrings:movieConnection"]);
+    Options.UseSqlite(builder.Configuration["ConnectionStrings:categoryConnection"]);
+
 });
 
 var app = builder.Build();

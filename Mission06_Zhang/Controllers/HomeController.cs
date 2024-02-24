@@ -25,15 +25,33 @@ namespace Mission06_Zhang.Controllers
         [HttpGet]
         public IActionResult MoviesCollectionForm()
         {
+            ViewBag.Categories = _movieContext.categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
             return View();
         }
 
         [HttpPost]
-        public IActionResult MoviesCollectionForm(Movies response)
+        public IActionResult MoviesCollectionForm(Movie response)
         {
+            
             _movieContext.movies.Add(response);//add record to the database
             _movieContext.SaveChanges();
-            return View("Index", response);
+            return RedirectToAction("AddingConfirmation", response);
+        }
+        public IActionResult AddingConfirmation(Movie response)
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult DisplayCollection()
+        {
+            var form = _movieContext.movies
+                .OrderBy(x => x.Year).ToList();
+
+            return View(form);
         }
 
     }
