@@ -9,8 +9,8 @@ builder.Services.AddDbContext<MoviesContext>(Options =>
 {
     Options.UseSqlite(builder.Configuration["ConnectionStrings:movieConnection"]);
     Options.UseSqlite(builder.Configuration["ConnectionStrings:categoryConnection"]);
-
 });
+
 
 var app = builder.Build();
 

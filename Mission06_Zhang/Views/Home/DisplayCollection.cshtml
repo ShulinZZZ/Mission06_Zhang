@@ -1,25 +1,26 @@
 ﻿@model List<Movie>
 
-<h1>Joel Hilton Movie Collection</h1>
+<h1 style="display: flex; justify-content: center; align-items: center;">Joel Hilton Movie Collection</h1>
 
 <table>
     <theard class="fw-bold"> 
         <tr>
-            <td>Category</td>
-            <td>Title</td>
-            <td>Year</td>
-            <td>Director</td>
-            <td>Rating</td>
-            <td>Edited</td>
-            <td>Lent To</td>
-            <td>Notes</td>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+            <th>Edit/Delete</th>
         </tr>  
     </theard>
     @foreach (Movie x in Model)
     {
         <tbody>
             <tr>
-                <td>@x.Category.CategoryName</td>
+                <td>@x.CategoryId</td>
                 <td>@x.Title</td>
                 <td>@x.Year</td>
                 <td>@x.Director</td>
@@ -27,8 +28,8 @@
                 <td>@x.Edited</td>
                 <td>@x.Lent</td>
                 <td>@x.Note</td>
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
 
             </tr>
         </tbody>

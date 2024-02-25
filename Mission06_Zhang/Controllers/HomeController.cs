@@ -25,22 +25,34 @@ namespace Mission06_Zhang.Controllers
         [HttpGet]
         public IActionResult MoviesCollectionForm()
         {
-            ViewBag.Categories = _movieContext.categories
-                .OrderBy(x => x.CategoryName)
-                .ToList();
+            //ViewBag.Categories = _movieContext.categories
+            //ViewBag.Categories = _movieContext.movies
+            //    .OrderBy(x => x.CategoryId)
+            //    .ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult MoviesCollectionForm(Movie response)
         {
-            
-            _movieContext.movies.Add(response);//add record to the database
-            _movieContext.SaveChanges();
-            return RedirectToAction("AddingConfirmation", response);
+            if(response != null && ModelState.IsValid)
+            {
+                _movieContext.movies.Add(response);//add record to the database
+                _movieContext.SaveChanges();
+                return View("AddingConfirmation", response);
+
+            }
+            else //empty form submitted 
+            {
+                ModelState.AddModelError(string.Empty, "Please input valid information before submit.");
+                return View(response);
+            }
+
         }
         public IActionResult AddingConfirmation(Movie response)
         {
+            var movieAdded = _movieContext.movies
+                .Where(x => x.MovieId == response.MovieId).ToList();
             return View();
         }
 

@@ -6,9 +6,10 @@ namespace Mission06_Zhang.Models
     public class Movie
     {
         [Key] public int MovieId { get; set; }
-        [ForeignKey("CategoryId")]
-        public required int CategoryId { get; set;}
-        public Category Category { get; set;}
+
+        //[ForeignKey("CategoryId")]
+        public required int? CategoryId { get; set;}
+        //public Category? CategoryName { get; set;}
         public required string Title {  get; set;}   
         public required int Year { get; set;}
         public required string Director {  get; set;}

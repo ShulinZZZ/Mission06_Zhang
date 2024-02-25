@@ -62,3 +62,22 @@ button[type="submit"] {
     display: inline-block;
     margin-right: 10px; /* Adjust spacing between the radio buttons */
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Collapses the border to make it look like a single line */
+}
+
+th, td {
+    border: 1px solid black; /* Adds border to table headers and cells */
+    padding: 8px; /* Adds space inside the cells */
+    text-align: left; /* Aligns text to the left */
+}
+
+th {
+    background-color: #f2f2f2; /* Adds a background color to table headers */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Adds a zebra-stripe effect to the table rows */
+}

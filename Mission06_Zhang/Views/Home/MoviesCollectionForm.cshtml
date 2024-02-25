@@ -6,13 +6,20 @@
 @model Mission06_Zhang.Models.Movie
 
 <form method="post">
-    <select asp-for="CategoryId">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="text-danger">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+    }
+
+    @* <select asp-for="CategoryId">
         <option value="">Select a Category</option>
-        @foreach (Category c in ViewBag.Categories)
+        @foreach (Model in ViewBag.Categories)
         {
             <option value="@c.CategoryId">@c.CategoryName</option>
         }
-    </select>
+    </select> *@
     <br />
 
     <label asp-for="Title">Title</label>
@@ -54,5 +61,7 @@
     <br />
 
     <button type="submit">Submit</button>
+
 </form>
+
 

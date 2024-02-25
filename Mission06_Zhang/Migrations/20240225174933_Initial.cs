@@ -5,7 +5,7 @@
 namespace Mission06_Zhang.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,14 +16,14 @@ namespace Mission06_Zhang.Migrations
                 {
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    category = table.Column<string>(type: "TEXT", nullable: false),
-                    title = table.Column<string>(type: "TEXT", nullable: false),
-                    year = table.Column<int>(type: "INTEGER", nullable: false),
-                    director = table.Column<string>(type: "TEXT", nullable: false),
-                    rating = table.Column<string>(type: "TEXT", nullable: false),
-                    edited = table.Column<string>(type: "TEXT", nullable: true),
-                    lent = table.Column<string>(type: "TEXT", nullable: true),
-                    notes = table.Column<string>(type: "TEXT", nullable: true)
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Year = table.Column<int>(type: "INTEGER", nullable: false),
+                    Director = table.Column<string>(type: "TEXT", nullable: false),
+                    Rating = table.Column<string>(type: "TEXT", nullable: false),
+                    Edited = table.Column<string>(type: "TEXT", nullable: true),
+                    Lent = table.Column<string>(type: "TEXT", nullable: true),
+                    Note = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
