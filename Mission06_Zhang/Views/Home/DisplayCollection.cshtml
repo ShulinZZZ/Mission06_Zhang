@@ -11,8 +11,9 @@
             <th>Director</th>
             <th>Rating</th>
             <th>Edited</th>
+            <th>Copied To Plex</th>
             <th>Lent To</th>
-            <th>Notes</th>
+            <th>Note</th>
             <th>Edit/Delete</th>
         </tr>  
     </theard>
@@ -20,14 +21,15 @@
     {
         <tbody>
             <tr>
-                <td>@x.CategoryId</td>
+                <td>@x.CategoryName?</td>
                 <td>@x.Title</td>
                 <td>@x.Year</td>
                 <td>@x.Director</td>
-                <td>@x.Rating</td>
+                <td>@x.Rating?</td>
                 <td>@x.Edited</td>
-                <td>@x.Lent</td>
-                <td>@x.Note</td>
+                <td>@x.LentTo?</td>
+                <td>@x.CopiedToPlex</td>
+                <td>@x.Notes?</td>
                 <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
                 <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
 

@@ -25,10 +25,9 @@ namespace Mission06_Zhang.Controllers
         [HttpGet]
         public IActionResult MoviesCollectionForm()
         {
-            //ViewBag.Categories = _movieContext.categories
-            //ViewBag.Categories = _movieContext.movies
-            //    .OrderBy(x => x.CategoryId)
-            //    .ToList();
+            ViewBag.Categories = _movieContext.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
             return View();
         }
 
@@ -37,7 +36,7 @@ namespace Mission06_Zhang.Controllers
         {
             if(response != null && ModelState.IsValid)
             {
-                _movieContext.movies.Add(response);//add record to the database
+                _movieContext.Movies.Add(response);//add record to the database
                 _movieContext.SaveChanges();
                 return View("AddingConfirmation", response);
 
@@ -51,7 +50,7 @@ namespace Mission06_Zhang.Controllers
         }
         public IActionResult AddingConfirmation(Movie response)
         {
-            var movieAdded = _movieContext.movies
+            var movieAdded = _movieContext.Movies
                 .Where(x => x.MovieId == response.MovieId).ToList();
             return View();
         }
@@ -60,11 +59,28 @@ namespace Mission06_Zhang.Controllers
         [HttpGet]
         public IActionResult DisplayCollection()
         {
-            var form = _movieContext.movies
-                .OrderBy(x => x.Year).ToList();
+            var form = _movieContext.Movies
+                .OrderBy(x => x.MovieId).ToList();
 
             return View(form);
         }
 
+        public IActionResult Edit(int updateId)
+        {
+            Movie updateRecord = _movieContext.Movies
+                .Single(x => x.MovieId == updateId);
+
+            ViewBag.Categories = _movieContext.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
+            return View("MoviesCollectionForm", updateRecord);
+        }
+
+        //[HttpPost]
+        //public IActionResult Edit(Movie response)
+        //{
+
+        //}
     }
 }
+    

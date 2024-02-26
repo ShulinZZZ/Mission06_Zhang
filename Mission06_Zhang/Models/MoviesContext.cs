@@ -8,7 +8,7 @@ namespace Mission06_Zhang.Models
         public MoviesContext(DbContextOptions<MoviesContext> options) : base(options) 
         { 
         }
-        public DbSet<Movie> movies {  get; set; }
-        //public DbSet<Category> categories { get; set; }
+        public DbSet<Movie> Movies {  get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

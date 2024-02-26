@@ -13,13 +13,13 @@
         </div>
     }
 
-    @* <select asp-for="CategoryId">
+    <select asp-for="CategoryId">
         <option value="">Select a Category</option>
-        @foreach (Model in ViewBag.Categories)
+        @foreach (Category c in ViewBag.Categories)
         {
             <option value="@c.CategoryId">@c.CategoryName</option>
         }
-    </select> *@
+    </select>
     <br />
 
     <label asp-for="Title">Title</label>
@@ -45,19 +45,23 @@
 
     <label asp-for="Edited">Edited</label>
     <label asp-for="Edited" class="radio-inline">
-        <input type="radio" asp-for="Edited" value="Yes"> Yes
+        <input type="radio" asp-for="Edited" value="1"> Yes
     </label>
     <label asp-for="Edited" class="radio-inline">
-        <input type="radio" asp-for="Edited" value="No"> No
+        <input type="radio" asp-for="Edited" value="0"> No
     </label>
 
     <br />
-    <label asp-for="Lent">Lent To</label>
-    <input asp-for="Lent" />
+    <label asp-for="LentTo">Lent To</label>
+    <input asp-for="LentTo" />
     <br />
 
-    <label asp-for="Note">Notes</label>
-    <input type="text" asp-for="Note" maxlength="25"/>
+    <label asp-for="CopiedToPlex">Copied To Plex</label>
+    <input asp-for="CopiedToPlex" />
+    <br />
+
+    <label asp-for="Notes">Notes</label>
+    <input type="text" asp-for="Notes" maxlength="25"/>
     <br />
 
     <button type="submit">Submit</button>
