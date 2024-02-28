@@ -5,6 +5,7 @@
 <table>
     <theard class="fw-bold"> 
         <tr>
+            
             <th>Category</th>
             <th>Title</th>
             <th>Year</th>
@@ -14,14 +15,15 @@
             <th>Copied To Plex</th>
             <th>Lent To</th>
             <th>Note</th>
-            <th>Edit/Delete</th>
-        </tr>  
+            <th></th>
+            <th></th>
+        </tr>
     </theard>
-    @foreach (Movie x in Model)
+    @foreach (var x in Model)
     {
         <tbody>
             <tr>
-                <td>@x.CategoryName?</td>
+                <td>@x.CategoryName</td>
                 <td>@x.Title</td>
                 <td>@x.Year</td>
                 <td>@x.Director</td>
@@ -30,8 +32,12 @@
                 <td>@x.LentTo?</td>
                 <td>@x.CopiedToPlex</td>
                 <td>@x.Notes?</td>
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
-                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId" style="background-color: white; border: 2px solid black;">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId" style="background-color: dimgrey;border: 2px solid dimgrey;">Delete</a>
+                </td>
 
             </tr>
         </tbody>

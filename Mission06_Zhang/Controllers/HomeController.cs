@@ -28,13 +28,16 @@ namespace Mission06_Zhang.Controllers
             ViewBag.Categories = _movieContext.Categories
                 .OrderBy(x => x.CategoryId)
                 .ToList();
-            return View();
+
+
+            return View(new Movie());
         }
 
         [HttpPost]
         public IActionResult MoviesCollectionForm(Movie response)
         {
-            if(response != null && ModelState.IsValid)
+            
+            if (ModelState.IsValid)
             {
                 _movieContext.Movies.Add(response);//add record to the database
                 _movieContext.SaveChanges();
@@ -43,7 +46,9 @@ namespace Mission06_Zhang.Controllers
             }
             else //empty form submitted 
             {
-                ModelState.AddModelError(string.Empty, "Please input valid information before submit.");
+                ViewBag.Categories = _movieContext.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
                 return View(response);
             }
 
@@ -65,10 +70,10 @@ namespace Mission06_Zhang.Controllers
             return View(form);
         }
 
-        public IActionResult Edit(int updateId)
+        public IActionResult Edit(int id)
         {
-            Movie updateRecord = _movieContext.Movies
-                .Single(x => x.MovieId == updateId);
+            var updateRecord = _movieContext.Movies
+                .Single(x => x.MovieId == id);
 
             ViewBag.Categories = _movieContext.Categories
                 .OrderBy(x => x.CategoryId)
@@ -76,11 +81,29 @@ namespace Mission06_Zhang.Controllers
             return View("MoviesCollectionForm", updateRecord);
         }
 
-        //[HttpPost]
-        //public IActionResult Edit(Movie response)
-        //{
+        [HttpPost]
+        public IActionResult Edit(Movie update)
+        {
+            _movieContext.Update(update);
+            _movieContext.SaveChanges();
+            return RedirectToAction("DisplayCollection", update.MovieId);
+        }
 
-        //}
+        public IActionResult Delete(int id)
+        {
+            var deleteRecord = _movieContext.Movies
+                .Single(x => x.MovieId == id);
+            return View(deleteRecord);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _movieContext.Movies.Remove(movie);
+            _movieContext.SaveChanges();
+
+            return RedirectToAction("DisplayCollection");
+        }
     }
 }
     

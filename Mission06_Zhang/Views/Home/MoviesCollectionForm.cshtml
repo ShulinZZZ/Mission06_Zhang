@@ -13,15 +13,27 @@
         </div>
     }
 
+    <div asp-validation-summary="All" class="text-danger">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
     <select asp-for="CategoryId">
         <option value="">Select a Category</option>
-        @foreach (Category c in ViewBag.Categories)
+        @if (ViewBag.Categories != null)
         {
-            <option value="@c.CategoryId">@c.CategoryName</option>
+            foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        }
+        else
+        {
+            <option>No Category</option>
         }
     </select>
     <br />
-
+    
+    <input type="hidden" asp-for="MovieId" />
     <label asp-for="Title">Title</label>
     <input asp-for="Title" />
     <br />
